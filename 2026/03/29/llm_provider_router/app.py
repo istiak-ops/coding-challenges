@@ -1,13 +1,13 @@
 from typing import Callable, Any, Dict
 
-def call_openai(model: str, temp: float):
+def call_openai(model: str, temp: float) -> str:
     return f"OpenAI logic using {model} at {temp}."
 
-def call_anthropic(prompt: str, max_tokens: int = 100):
+def call_anthropic(prompt: str, max_tokens: int = 100) -> str:
     return f"Anthropic logic with {max_tokens} tokens."
 
 
-def llm_router(provider: Callable, *args: Any, api_key: Dict[str, Any] = "secrets", **kwargs: Any) -> Any:
+def llm_router(provider: Callable, *args: Any, api_key: str = "secrets", **kwargs: Any) -> Any:
     """
     A production llm provider router tools with telemetry.
     
